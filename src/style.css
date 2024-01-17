@@ -56,8 +56,13 @@ strong{
 }
 footer{
     text-align: center;
-    color: #A9A7B3;
-    border-top: 1px solid #F9F7FE;
+    color: #666666;
+    font-size: 14px;
+    line-height: 14px;
+}
+.footer{
+    border-top:  1px solid #F9F7FE;
+    margin-bottom: 20px;
 }
 a{
     color: #885DF1;
