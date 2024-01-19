@@ -29,8 +29,7 @@ function localTime(date) {
   ]
 
   let currentDay = days[day];
-
-
+  return `${currentDay} ${hour}:${minutes}`;
   
 }
 
