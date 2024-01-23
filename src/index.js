@@ -11,20 +11,17 @@ function refreshWeather(response) {
   let dateElement = new Date(response.data.time * 1000);
 
   cityElement.innerHTML = response.data.city;
-  
-  temperatureElement.innerHTML = Math.round(temperature)
+
+  temperatureElement.innerHTML = Math.round(temperature);
   icon.innerHTML = `<img src="${response.data.condition.icon_url}"?>`;
   humidity.innerHTML = `${response.data.temperature.humidity}%`;
-  wind.innerHTML = `${response.data.wind.speed}km/h`
+  wind.innerHTML = `${response.data.wind.speed}km/h`;
   description.innerHTML = response.data.condition.description;
   localTimeElement.innerHTML = localTime(date);
-  }
-
-
+};
 
 function localTime(date) {
-  e.preventDefault();
-  let day = document.querySelector("#day")
+  let day = document.querySelector("#day");
   day = date.getDay();
   hour = date.getHours();
   minutes = date.getMinutes();
@@ -36,37 +33,33 @@ function localTime(date) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
-  ]
-  if (hour < 10){
-    hour = `0${hour}`
+    "Saturday",
+  ];
+  if (hour < 10) {
+    hour = `0${hour}`;
   }
 
-  if (minutes < 10){
-    minutes = `0${minutes}`
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
   }
 
   let currentDay = days[day];
   return `${currentDay} ${hour}:${minutes}`;
-  
-}
+};
 
 function getCity(city) {
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-    let apiKey = "0e07d3f80c4414708ec095toac29b8a4";
-    axios.get(apiUrl).then(refreshWeather)
-    
-}
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  let apiKey = "0e07d3f80c4414708ec095toac29b8a4";
+  axios.get(apiUrl).then(refreshWeather);
+};
 
 function searchEvent(event) {
-    e.preventDefault();
-    let searchInput = document.querySelector("#search-input");
-    getCity(searchInput.value);
+  e.preventDefault();
+  let searchInput = document.querySelector("#search-input");
+  getCity(searchInput.value);
+};
 
-    
-}
-
-let searchFormElement = document.querySelector("#search-form")
+let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchEvent);
 
-getCity("Kano")
+getCity("Kano");
